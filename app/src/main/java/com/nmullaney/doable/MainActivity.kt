@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
                     val currentDestination = navBackStackEntry?.destination
                     AllScreens.forEach { screen ->
                         NavigationBarItem(
-                            icon = { Icon(screen.icon, contentDescription = null) },
+                            icon = { screen.iconResource.Icon() },
                             label = { Text(stringResource(screen.resourceId)) },
                             selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
                             onClick = {
@@ -66,7 +66,7 @@ class MainActivity : ComponentActivity() {
         ) { innerPadding ->
             NavHost(
                 navController,
-                startDestination = Screen.Home.route,
+                startDestination = Screen.Today.route,
                 Modifier.padding(innerPadding)) {
                 AllScreens.forEach { screen ->
                     composable(screen.route) {
